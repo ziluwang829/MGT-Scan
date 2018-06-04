@@ -81,8 +81,9 @@ the .fa file.
 source("GTScan.R")
 ```
 
-
 #12. Clear temporary .db files in /tmp/gtscan.db.
+
+## RESULT
 
 The result, shown as a .tab file, may look like this:
 
