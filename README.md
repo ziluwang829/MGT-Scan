@@ -12,7 +12,7 @@ found [Here](https://gt-scan.csiro.au/).
 export $PATH=$PATH:/your/bowtie/path
 ```
 
-#2. On the bowtie website, download the pre-built indexes for H. sapiens, UCSC hg19 from the right sidebar.
+#2. On the [bowtie](http://bowtie-bio.sourceforge.net/tutorial.shtml) website, download the pre-built indexes for H. sapiens, UCSC hg19 from the right sidebar.
 
 
 #3. Clone the repository from this page by using the following command. 
