@@ -20,7 +20,7 @@ git clone https://github.com/thepikabone/MGT-Scan
 #3. Head back to the bowtie website and download the pre-built indexes for H. sapiens, UCSC hg19
 from the right sidebar into the **genome** directory, and unzip the file. Remember this is your genome path. 
 
-#4. Enter **MGT-Scan** directory and enter **gt-scan** directory. 
+#4. Enter **MGT-Scan** directory and then enter **gt-scan** directory. 
 ```
 cd MGT-Scan
 cd gt-scan
@@ -63,7 +63,7 @@ For example:
 Example: R --args /home/zw355/ModifiedGT-Scan test.fa 3 80 4
 ```
 
-#10. Run GTScan.R by **source(“GTScan.R”)** and wait for results. The results should be a tab file with the same name as
+#10. Run GTScan.R and wait for results. The results should be a tab file with the same name as
 the .fa file.
 ```
 source("GTScan.R")
