@@ -7,7 +7,7 @@ This program is a slightly modified version of the **GT-Scan**. In this version,
 fa file can be searched simultaneously, depending on the number of CPU cores. The original version can be
 found [Here](https://gt-scan.csiro.au/).
 
-#1. First, download and add [bowtie](http://bowtie-bio.sourceforge.net/tutorial.shtml) to your PATH variable in  **$HOME/.bashrc**. 
+#1. First, download and add [bowtie](http://bowtie-bio.sourceforge.net/tutorial.shtml) to your $PATH variable in  **$HOME/.bashrc**. 
 ```
 export PATH=$PATH:/your/bowtie/path
 ```
