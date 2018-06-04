@@ -81,7 +81,7 @@ the .fa file.
 source("GTScan.R")
 ```
 
-#12. Clear temporary .db files in /tmp/gtscan.db.
+#12. Clear temporary .db files in /tmp/gtscan.db **after** the program is finished running.
 
 ## RESULT
 
