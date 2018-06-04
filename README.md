@@ -43,35 +43,45 @@ cd /tmp
 mkdir gtscan.db
 ```
 
-#7. Export **gt-scan** directory to environment variable in **$HOME/.bashrc**.
+#8. Export **gt-scan** directory to environment variable in **$HOME/.bashrc**.
 ```
 export PATH=/your/gt-scan/path:$PATH
 ```
 
-#8. In the console, type **R --args** , followed by the following args:
+#9. In the console, type **R --args** , followed by the following args:
+
   a. **Directory**: Directory that contains the .fa file.
+  
   b. **FileName**: Name of the .fa file.
+  
   c. **n**: Numbers of pairs of target candidates per sequence.
+  
   d. **dis**: The minimum distance between individual target candidate in a pair.
+  
   e. **Cores**: Number of CPU cores this program can use.
+  
 Separate each arg with a space, then hit enter when you’re finished.
+
 For example:
 ```
 Example: R --args /home/zw355/ModifiedGT-Scan test.fa 3 80 4
 ```
 
-#9. Run GTScan.R by **source(“GTScan.R”)** and wait for results. The results should be a tab file with the same name as
+#10. Run GTScan.R by **source(“GTScan.R”)** and wait for results. The results should be a tab file with the same name as
 the .fa file.
 ```
 source("GTScan.R")
-``
+```
 
 
-#10. Clear db files in /tmp/gtscan.db.
+#11. Clear db files in /tmp/gtscan.db.
 
 The result, shown as a .tab file, may look like this:
+
 chr1 714299 714318 - CGCCCGGCGCCGAAGACCGG chr1 714026 714045 + CCAACGGCCCACCTCTATGG
+
 chr1 714299 714318 - CGCCCGGCGCCGAAGACCGG chr1 714026 714045 + CCAACGGCCCACCTCTATGG
+
 Each line represents a pair of candidate sequences with their chromosome numbers, locations,
 and directions. The distance between each two should be greater than the given minimum distance.
 These target candidates are likely to have few to no mismatches. A reminder that a sequence in the fa
