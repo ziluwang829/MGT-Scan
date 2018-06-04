@@ -56,7 +56,7 @@ cd /tmp
 mkdir gtscan.db
 ```
 
-#10. Go back into the MGT-Scan directory, in the console, type **R --args** , followed by the following args:
+#10. Go back into the MGT-Scan directory, in the console, type **R --args** , followed by the following arguments:
 
 >a. **Directory**: Directory that contains the .fa file. 
 
@@ -68,7 +68,7 @@ mkdir gtscan.db
 
 >e. **Cores**: Number of CPU cores this program can use.
   
-Separate each arg with a space, then hit enter when you’re finished.
+Separate each argument with a space, then hit enter when you’re finished.
 
 For example:
 ```
