@@ -9,7 +9,7 @@ found [Here](https://gt-scan.csiro.au/).
 
 #1. First, download and add [bowtie](http://bowtie-bio.sourceforge.net/tutorial.shtml) to your PATH variable in  **$HOME/.bashrc**. 
 ```
-export $PATH=$PATH:/your/bowtie/path
+export PATH=$PATH:/your/bowtie/path
 ```
 
 #2. On the [bowtie](http://bowtie-bio.sourceforge.net/tutorial.shtml) website, download the pre-built indexes for H. sapiens, UCSC hg19 from the right sidebar.
@@ -46,7 +46,7 @@ chmod 700 gt-scan.py
 
 #8. Export **gt-scan** directory to environment variable in **$HOME/.bashrc**.
 ```
-export PATH=/your/gt-scan/path:$PATH
+export $PATH=/your/gt-scan/path:$PATH
 ```
 
 #9. Make a directory called **gtscan.db** in **/tmp**. This is where all the temporary files are stored.
