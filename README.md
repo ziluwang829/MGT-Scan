@@ -50,15 +50,11 @@ export PATH=/your/gt-scan/path:$PATH
 
 #9. In the console, type **R --args** , followed by the following args:
 
-  a. **Directory**: Directory that contains the .fa file.
-  
-  b. **FileName**: Name of the .fa file.
-  
-  c. **n**: Numbers of pairs of target candidates per sequence.
-  
-  d. **dis**: The minimum distance between individual target candidate in a pair.
-  
-  e. **Cores**: Number of CPU cores this program can use.
+>a. **Directory**: Directory that contains the .fa file.  
+>b. **FileName**: Name of the .fa file.  
+>c. **n**: Numbers of pairs of target candidates per sequence.  
+>d. **dis**: The minimum distance between individual target candidate in a pair.
+>e. **Cores**: Number of CPU cores this program can use.
   
 Separate each arg with a space, then hit enter when you’re finished.
 
