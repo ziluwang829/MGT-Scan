@@ -22,6 +22,10 @@ git clone https://github.com/thepikabone/MGT-Scan
 
 
 #4. Enter **MGT-Scan** directory and and unzip the pre-built indexes from step 2 into the **genome** directory. Remember this is your genome path. 
+```
+cd MGT-Scan
+cd genome
+````
 
 #5. Go back into **MGT-Scan** directory and enter **gt-scan** directory.
 ```
