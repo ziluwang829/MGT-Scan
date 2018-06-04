@@ -25,7 +25,7 @@ git clone https://github.com/thepikabone/MGT-Scan
 ```
 cd MGT-Scan
 cd genome
-gunzip YourFile
+gunzip your/downloaded/file
 ````
 
 #5. Go back into **MGT-Scan** directory and enter **gt-scan** directory.
