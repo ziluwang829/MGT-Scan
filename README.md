@@ -7,7 +7,7 @@ This program is a slightly modified version of the GT-Scan. In this version, mul
 fa file can be searched simultaneously, depending on the number of cores. The original version can be
 found [Here](https://gt-scan.csiro.au/)
 
-#1. First, download and add bowtie to your PATH variable.
+#1. First, download and add [bowtie](http://bowtie-bio.sourceforge.net/tutorial.shtml) to your PATH variable.
 
 #2. Change into the gt-scan directory within the ModifiedGT-Scan directory
 
