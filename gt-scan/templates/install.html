@@ -1,0 +1,214 @@
+$def with (recent,menustatus)
+$var recent = recent
+$var menustatus = menustatus
+$var relativedir: ../../
+$var active: install
+$var title: GT-Scan | Installation manual
+$var description: This manual outlines the installation process if you wish to install GT-Scan locally.
+$var cssfile:
+    ../../static/css/gt-scan.css
+$var jsfiles:
+    ../../static/js/jquery.min.js
+    ../../static/js/menu.js 
+<div id=main>
+<div class="documentation material">
+    <h1 id=top>Installation manual</h1>
+    <h3>Table of contents:</h3>
+    <ul>
+      <li><a href=#quick>Quick install</a>
+      <li><a href=#intro>Introduction</a>
+      <li><a href=#prereqs>Prerequisite software</a>
+      <li><a href=#cmd>Command-line</a>
+      <li><a href=#backend>Back-end server</a>
+      <li><a href=#frontend-w>Front-end server (web.py)</a>
+      <li><a href=#frontend-a>Front-end server (Apache)</a>
+      <li><a href=#pbs>Configuring Opal to use PBS (FIXME)</a>
+      <li><a href=#getting>Modifying GT-Scan (authorized developers only)</a>
+      <li><a href=#additional>Additional information</a>
+    </ul>
+    <hr>
+    <h2 id=quick>Quick install</h2>
+    <ul>
+    <li>Ensure Bowtie 1.0 is added to your PATH variable
+    <li>Download GT-Scan from the <a href=http://www.braembl.org.au:97/gt-scan/downloads>GT-Scan downloads website</a>
+    <li>Extract GT-Scan: <span class=script>tar zxf gt-scan_VERSION.tar.gz</span>
+    <li>Change into the GT-Scan directory: <span class=script>cd gt-scan_VERSION</span>
+    <li>Edit <span class=script>config.ini</span> and specify the path to the Bowtie indexed genomes next to <span class=script>ref_genome_dir</span>
+    <li>You have now successfully installed and configured GT-Scan! However, you may wish to add GT-Scan to the PATH variable for convenience,
+                    where GT-SCAN_DIRECTORY is the full path to where you have installed GT-scan:
+    <ul>
+      <li>For Bash, run: <span class=script>export PATH=$$PATH:GT-SCAN_DIRECTORY</span>
+      <li>For C Shell, run: <span class=script>setenv PATH $$PATH:GT-SCAN_DIRECTORY</span>
+    </ul>
+    <li>You can now run GT-scan on the included FASTA file, <span class=script>input.fa</span>, by running <span class=script>gt-scan.py</span>
+    <li>Run <span class=script>gt-scan.py -h</span> to view the usage information
+    </ul>
+    
+    <h2 id=intro>Introduction</h2>
+    <p>The GT-Scan web application implements both a front-end and back-end service to provide an interactive, user-friendly experience. The back-end allows GT-Scan
+    job creation through <a href=http://tomcat.apache.org/>Apache Tomcat</a> and <a href=https://github.com/nbcrrolls/opaltoolkit/tree/master/opal>Opal 2</a>. Opal provides 
+    SOAP services, which allow API calls from the external services such as the front-end. The front-end extends on
+    the back-end by providing features such as form validation, job history, a detailed status page as well as a consistent user experience. These instructions are generic for Linux, however they should only require minor modifications for Windows or 
+    any other system capable of running Java and Python. </p>
+
+    <h2 id=prereqs>Prerequisite software</h2>
+    <p>The command-line and web-server installation both require:</p>
+      <ul>
+      <li><a href=http://www.python.org/>Python 2.7</a>
+      <li><a href=http://bowtie-bio.sourceforge.net/index.shtml>Bowtie 1.0</a>
+        <ul><li><a href=ftp://ftp.ccb.jhu.edu/pub/data/bowtie_indexes/>Bowtie indexed genomes</a></ul>
+      </ul>
+    <p>The web-server back-end requires the following, in addition to the above:</p>
+    <ul>
+      <li><a href=http://tomcat.apache.org/>Apache Tomcat</a>
+      <li><a href=https://github.com/nbcrrolls/opaltoolkit>Opal 2</a>
+    </ul>
+    <p>The prerequisite sofware for the web.py or Apache frontend are:</p>
+    <ul>
+      <li><a href=http://www.python.org/>Python 2.7</a>
+    </ul>
+    <p>Further prerequisites of the Apache frontend are:</p>
+    <ul>
+      <li><a href=http://httpd.apache.org/>Apache HTTP server</a>
+      <ul>
+        <li><a href=https://code.google.com/p/modwsgi/>mod_wsgi</a>
+      </ul>
+    </ul>
+
+    
+    <h2 id=cmd>Command-line</h2>
+      <ul>
+        <li>Download and extract GT-Scan to a directory on your machine.
+        <li>Configure the following parameters in <span class=script>config.ini</span>:
+        <ul>
+          <li><span class=script>ref_genome_dir</span> - the base directory containing the Bowtie indexed genomes.
+        </ul>
+        <li>Add the directory to PATH with <span class=script>export PATH=$$PATH:GT-SCAN_DIRECTORY</span>.
+        <li>See the manual for detailed information on using GT-Scan, or run <span class=script> gt-scan.py -h</span> from the command-line for a basic overview.
+      </ul>
+    
+    
+    
+    
+    <h2 id=backend>Back-end server</h2>
+    <p>Follow this section and one of the front-end sections to set-up the GT-Scan web-service. 
+                This assumes you have a working installation of the GT-Scan command-line tool and have met the above prerequisites.</p>
+                <p>By default, Opal will 'fork' new jobs. If many jobs are running simultaneously,
+                 system performance will suffer greatly.  For a production-quality server, it is essential
+           that jobs be queued to avoid overloading system resources.  Opal can handle this by using
+           PBS, which supports queuing jobs on multiprocessor systems (computer servers and clusters).  
+                 See the 'Advanced' section for instructions on setting up Opal with PBS.
+                 </p>
+    <ul>
+      <li>Make the following changes to <span class=script>etc/gt-scan_config.xml</span>:
+      <ul>
+        <li><span class=script>binaryLocation</span> - specify the location of 
+<span class=script>gt-scan.py</span>.
+        <li>If you intend to use the Opal submission form, (i.e. as a web service via e.g. 
+                        <span class=script>http://localhost:8080/opal2/dashboard?command=serviceList</span>),
+                        insert the names of the Bowtie indexed genomes that you have installed under the <span class=script>&lt;!-- Reference genomes --></span> line.
+      </ul>
+                        <li>We assume below that <span class=script>TOMCAT_DIRECTORY</span> is the full path to your Apache Tomcat install directory
+      and <span class=script>OPAL_DIRECTORY</span> is the full path to your OPAL install directory.
+                        <li>For OPAL 2.5 (and beyond):
+      <ul> 
+        <li><div class=script>cp etc/gt-scan_config.xml TOMCAT_DIRECTORY/deploy<br>
+                        </ul>
+      <li>For OPAL 2.4:
+      <ul>
+        <li><div class=script>cp etc/gt-scan_config.xml OPAL_DIRECTORY/configs<br>
+        cd OPAL_DIRECTORY<br>
+        ant deploy -DserviceName=gt-scan -DappConfig=configs/gt-scan_config.xml</div>
+      </ul>
+      <li>If Tomcat and Opal are installed on your local machine with default settings, the GT-Scan back-end should be available at <a href=http://localhost:8080/opal2/>http://localhost:8080/opal2/</a> on the 'Dashboard' under the 'List of applications' tab.
+    </ul>
+
+    <h2 id=frontend-w>Front-end server (web.py)</h2>
+    <p>Follow the instructions in this section to use web.py's internal web server to host the front-end. This is a simple procedure since all Python extensions are included with the GT-Scan source and minimal configuration of the server is required.</p>
+
+
+    <ul>
+      <li>Extract the software to a directory
+      <li>Configure parameters in <span class=script>config.ini</span>:
+      <ul>
+        <li><span class=script>port</span> - the port web.py will host GT-Scan on. A low port number may require superuser privileges.
+          Note also that you may have to try several port numbers to find one that is not already in use.
+        <li><span class=script>ref_genome_dir</span> - the directory containing Bowtie indexed genomes.
+        <li><span class=script>ref_genomes</span> - each line contains the name of a reference genome, in the format:
+        <span class=script>GENOME_NAME = FRIENDLY_NAME</span>
+        <li><span class=script>online_mode</span> - set this to 1.
+        <li><span class=script>mail</span> - SMTP details for outbound mail upon job completion (optional).
+        <li><strong>Note</strong> - In windows you may need a text editor that can handle Unix newlines, such as <a href=http://notepad-plus-plus.org/>Notepad++</a>.
+      </ul>
+      <li>Launch the front-end with: <span class=script>gt-scan_frontend.py</span>.
+    </ul>
+
+    
+    
+
+
+    <h2 id=frontend-a> Front-end server (Apache)</h2>
+    <p>Follow the instructions in this section to use Apache to host the front-end through WSGI. This is not only more flexible than using the built in web.py server, but can also be more stable for a greater number of users. It is, however, much more complicated to set-up.</p>
+
+
+    <ul>
+      <li>Extract the software to a directory
+      <li>Configure Apache to serve <span class=script>gt-scan_frontend.py</span> by adding the following lines to <span class=script>httpd.conf</span>:
+      <ul class=script>
+        <li>LoadModule wsgi_module modules/mod_wsgi.so<br><br>
+        WSGIScriptAlias /gt-scan /var/www/webpy-app/gt-scan_frontend.py/<br>
+        AddType text/html .py<br>
+        Alias /gt-scan/static /var/www/webpy-app/static/<br>
+        &lt;Directory /var/www/webpy-app/&gt;<br>
+            &#160;&#160;Order deny,allow<br>
+            &#160;&#160;Allow from all<br>
+        &lt;/Directory&gt;
+      </ul>
+      <li>Configure parameters in <span class=script>config.ini</span>:
+      <ul>
+        <li><span class=script>ref_genome_dir</span> - the directory containing Bowtie indexed genomes
+        <li><span class=script>ref_genomes</span> - each line contains the name of a reference genome, in the format:
+        <span class=script>GENOME_NAME = FRIENDLY_NAME</span>
+        <li><span class=script>web_root</span> - set this to to the subdirectory Apache is hosting GT-Scan in, i.e. <span class=script>/gt-scan</span>.        
+        <li><span class=script>online_mode</span> - set this to 1.
+        <li><span class=script>[mail]</span> (Optional) - SMTP details for outbound mail upon job completion.
+        <ul><li><span class=script>base_url</span> - set this to your website URL, excluding the directory, for email links to be properly formatted.</ul>
+      </ul>
+      <li>Install GT-Scan to the Apache server
+                           where <span class=script>TOMCAT_DIRECTORY</span> is the full path to your Apache Tomcat install directory:
+      <ul class=script>
+        <li>mkdir /var/www/webpy-app<br>
+        cp gt-scan_frontend.py /var/www/webpy-app<br>
+        cp config.ini /var/www/webpy-app<br>
+        cp -r templates/ /var/www/webpy-app<br>
+        cp -r static/ /var/www/webpy-app<br>
+        cp -r libs/ /var/www/webpy-app<br>
+        mkdir /var/www/webpy-app/sessions<br>
+        ln -s TOMCAT_DIRECTORY/webapps/ROOT /var/www/webpy-app/static/results
+        <!--chmod 777 /var/www/webpy-app/sessions-->
+      </ul>
+      <li> You need to restart your Apache server. An example command for some Linux distributions is: <span class=script>/sbin/service httpd restart</span>
+      <li>If your Apache installation is at port 80 on your local machine, GT-Scan should now be available at
+      <a href=http://localhost/gt-scan/>http://localhost/gt-scan/</a>.
+    </ul>
+
+    <h2 id=pbs>Configuring Opal to use PBS (FIXME)</a></h2>
+    <p>Under construction.</p>
+    <p></p>
+
+    <h2 id=additional>Additional information</h2>
+    <p>Under construction.
+                </p>
+    <p></p>
+    
+    <h2 id=getting>Modifying GT-scan (authorized developers only) </h2>
+    <p>The current version of GT-Scan is available from the <a href=http://www.braembl.org.au:97/gt-scan/downloads>GT-Scan downloads website</a>.
+                Authorized GT-Scan developers can check-out and update the source from the SVN repository using 
+                </p>
+                <p><span class=script>svn co https://ps.imb.uq.edu.au/svn/AidanOBrien/crispr</span></p>
+                <p>This download includes all of the required files for the back-end and both front-end setups.</p>
+  
+  <a href=# id=back-to-top><span class=arrow></span></a>
+</div>
+<br>
+</div>

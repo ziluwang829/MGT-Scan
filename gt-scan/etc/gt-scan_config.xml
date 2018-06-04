@@ -1,0 +1,70 @@
+<appConfig xmlns="http://nbcr.sdsc.edu/opal/types"
+	   xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <metadata appName="GT-Scan">
+
+    <usage><![CDATA[GT-Scan is a application for identifying unique genomic targets]]></usage>
+
+    <info xsd:type="xsd:string">
+
+      <![CDATA[
+	       GT-Scan 1.100.2 -- Nov 20 2013 -- 01:20:56
+	       Usage: ./gt-scan.py [-i<input-type>] <name> [-o<output-type>] <name>
+	       Report Bugs to <ayduno@gmail.com>.
+      ]]>
+
+    </info>
+
+    <types>
+      <taggedParams>
+
+        <param>
+	  <id>genome</id>
+	  <tag>-g</tag>
+	  <paramType>STRING</paramType>
+	  <required>true</required>
+	  <textDesc>Reference genome</textDesc>
+          <!-- Reference genomes -->
+          <!-- Uncomment and/or add the genomes that you have installed on your system. -->
+          <default>hg19</default>
+          <value>hg19</value>
+          <!--
+          <value>mm10</value>
+          <value>agag</value>
+          <value>ak98</value>
+          <value>kf89</value>
+          -->
+	</param>
+
+        <param>
+	  <id>rule</id>
+	  <tag>-r</tag>
+	  <paramType>STRING</paramType>
+	  <required>true</required>
+	  <textDesc>Enter a rule</textDesc>
+          <default>BBBBBBBBBBBBBBBBBBNGG</default>
+	</param>
+
+        <param>
+	  <id>file</id>
+	  <tag>-f</tag>
+	  <paramType>FILE</paramType>
+	  <ioType>INPUT</ioType>
+	  <required>true</required>
+	  <textDesc>Input sequence</textDesc>
+	</param>
+
+      </taggedParams>
+    </types>
+
+  </metadata>
+  <!--Specify the full path to the location of gt-scan.py on your system -->
+  <!-- FIXME uncomment
+  <binaryLocation>/home/aidan/bin/gt-scan/gt-scan.py</binaryLocation>
+  -->
+  <binaryLocation>/Users/t.bailey/ps-projects/AidanOBrien/gt-scan/gt-scan.py</binaryLocation>
+
+  <defaultArgs></defaultArgs>
+  <validateArgs>false</validateArgs>
+  <jobManagerFQCN>edu.sdsc.nbcr.opal.manager.ForkJobManager</jobManagerFQCN>
+  <parallel>false</parallel>
+</appConfig>

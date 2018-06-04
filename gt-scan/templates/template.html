@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset=utf-8>
+	<title>GT-Scan</title>
+	<link rel='shortcut icon' href='data:image/ico;base64,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'>
+	<link rel=stylesheet href='../css/gt-scan.css'>
+	<link rel=stylesheet href='../css/jquery.dataTables.css'>
+</head>
+
+<body>
+	<!-- Left hand side menu. Placeholder elements are replaced with variables by gt-scan_frontend.py-->
+	<div id=menu>
+		<a class=menu-title>GT-Scan</a>
+		<ul>
+			<li class='inactive'><span>Job name:</span>
+			<ul><li class='inactive'><span>$:jobName</span></ul>
+			
+			<li class='inactive'><span>Rule ($:ruleLen nt):</span>
+			<ul><li class='inactive'><span><pre>$:rule</pre><span></ul>
+			
+			<li class='inactive'><span>Off-target filter:</span>
+			<ul><li class='inactive'><span><pre>$:filter</pre><span></ul>
+			
+			<li class='inactive'><span>Max. allowed no. of high-specificity mismatches:</span>
+			<ul><li class='inactive'><span><pre>$:mismatches</pre><span></ul>
+			
+			<li class='inactive'><span>Genome:</span>
+			<ul><li class='inactive'><span>$:genome</span></ul>
+			
+			<li class='inactive'><span>Candidate region id:</span>
+			<ul><li class='inactive'><span>$:regionID</span></ul>
+			
+			<li class='inactive'><span>Candidate region:</span>
+			<ul><li class='inactive'><span>$:region</span></ul>
+			
+			<li class='inactive'><span>Candidate region length:</span>
+			<ul><li class='inactive'><span>$:length</span></ul>
+			
+			<li class='inactive'><span>Job execution time:</span>
+			<ul><li class='inactive'><span>$:time</span></ul>			
+		</ul>
+	</div>
+	<!-- Wrapper for main section, in this case, this section contains the two tables -->
+	<div id=main>
+		<!-- Placeholder for target table -->
+		<table class=display id=candidate-target-table>
+		
+		
+			<thead>
+				<tr>
+					<th rowspan="2"></th>
+					<th rowspan="2"></th>
+					<th rowspan="2"></th>
+					<th colspan="4" class=spanning>Number of Potential Off-targets of Different Severity</th>
+				</tr>
+				<tr>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			
+			
+			<tbody>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+			
+			
+			
+		</table>
+
+		<!-- Placeholder for off-target table -->
+		<table class=display id=off-target-table>
+			<thead>
+				<tr>
+					<th rowspan="2"></th>
+					<th colspan="3" class=spanning>Number and Specificity of Mismatches</th>
+					<th rowspan="2"></th>
+					<th rowspan="2"></th>
+					<th rowspan="2"></th>
+					<th rowspan="2"></th>
+					<th rowspan="2"></th>		
+				</tr>
+				
+				
+				<tr>
+					<th></th>
+					<th></th>
+					<th></th>		
+				</tr>
+			</thead>
+			
+			
+			<tbody>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script>var jobId</script>
+	<!-- Location of Javascript files -->
+	<script src='../js/jquery.min.js'></script>
+	<script src='../js/jquery.browser.min.js'></script>
+	<script src='../js/jquery.dataTables.min.js'></script>
+	<script src='../js/gt-scan.js'></script>
+	<script src='../js/jquery.tools.min.js'></script>
+	<script src='tables.js'></script>
+	<script src='otables.js'></script>
+
+
+</body>
+</html>

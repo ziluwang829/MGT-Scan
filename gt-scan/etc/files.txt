@@ -1,0 +1,2 @@
+build.xml - Fix for Opal's build file for Tomcat 7 (credit James Johnson)
+gt-scan_config.xml - Configuration file for deploying GT-Scan with Opal

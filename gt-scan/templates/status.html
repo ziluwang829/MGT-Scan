@@ -1,0 +1,40 @@
+$def with (recent,job_id,status,styles,menustatus)
+$var recent = recent
+$var menustatus = menustatus
+$var relativedir: ../../
+$var active: $job_id
+$var title: Job status
+$var description: The status page for the specified job.
+$var cssfile:
+    ../../static/css/gt-scan.css
+$var jsfiles:
+    ../../static/js/jquery.min.js
+    ../../static/js/menu.js
+    ../../static/js/spin.min.js
+
+<div id="main">
+<div class="material shadow_wrap">
+  <div id="status">$:status</div>
+  <div class="contents">
+    <ul id="status_list">
+      <li>Job ID: $:job_id
+      <li class="$:styles[0]" id="stdout_complete"><a href="../log/">Log</a>
+      <li class="$:styles[1]" id="stderr_complete"><a href="../error/">Error messages</a>
+      <li class="$:styles[2]" id="input_complete"><a href="../input/">Input file</a>
+      <li class="$:styles[3]" id="results_complete"><a href="../">Click here to view the results page</a>
+    </ul>
+  </div>
+</div>
+<i>This page will update automatically as job status changes.</i>
+</div>
+<!-- Auto page refresh. Updates page depending on job status, until job is complete -->
+<script>
+  var opts = {
+    lines: 13, length: 23, width: 8, radius: 28, corners: 0.7, rotate: 0, direction: 1, color: '#000', speed: 0.8, trail: 87, shadow: false,
+    hwaccel: false, className: 'spinner', zIndex: 2e9, top: '50%', left: '15.5em'
+  };
+  var apiUrl = '../../api/$:job_id/status/'
+  var target = document.getElementById('main');
+  var spinner = new Spinner(opts).spin(target);
+  var timere = setTimeout(function(){updatePage()}, 0);
+</script>

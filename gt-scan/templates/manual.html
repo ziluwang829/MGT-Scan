@@ -1,0 +1,136 @@
+$def with (recent,menustatus)
+$var recent = recent
+$var menustatus = menustatus
+$var relativedir: ../../
+$var active: manual
+$var title: GT-Scan | Manual
+$var description: This manual describes the steps for submitting a GT-Scan job, as well as outlining the results page.
+$var cssfile:
+    ../../static/css/gt-scan.css
+$var jsfiles:
+    ../../static/js/jquery.min.js
+    ../../static/js/menu.js
+<div id=main>
+<div class="documentation material">
+  <h1 id=top>Manual</h1>
+  <h3>Table of contents:</h3>
+  <ul>
+    <li><a href=#overview>Overview</a>
+    <li><a href=#input>Submission form</a>
+    <ul><li><a href=#basic>Basic parameters</a>
+      <li><a href=#advanced>Advanced parameters</a>
+      <li><a href=#information>Job information</a>
+    </ul>
+    <li><a href=#output>Output</a>
+    <ul><li><a href=#sidebar>Job information</a>
+      <li><a href=#targets>Candidate target table</a>
+      <li><a href=#offtargets>Potential off-target table</a>
+    </ul>
+  </ul>
+  <hr>
+  <h2 id=overview>Overview</h2>
+  <p>GT-Scan is a tool for predicting optimal target sites in a DNA sequence, in relation to the reference genome of a specified organism.</p>
+
+  <h3 id=input>Submission form</h3>
+  <p>The input consists of basic and advanced parameters. On the job submission page, you can view more information by hovering your mouse over
+  the <span class=helper style='display:inline-block;' title=''>?</span> icons.</p>
+    
+  <h3 id=basic>Basic parameters</h3>    
+  <img src='../../static/images/submit-basic.png' alt='Basic parameters'>
+
+  <p>The <b>candidate genomic region</b> should be an unspliced region of DNA, optionally with a <a href='http://en.wikipedia.org/wiki/FASTA_format#Description_line' target=_blank>FASTA description line</a>.
+  You can enter a sequence in the text field,
+  or you can click 'Browse' to select a text file from your local machine. Click 'Clear' to delete to contents of this text box. An example human DNA sequence that we used to generate
+  the images in the <a href=#output>Output</a> section of this manual is available under the <span class=helper style='display:inline-block;' title=''>?</span> icon.</p>
+    
+  <p>Select a reference genome in the next field. Please <a href='mailto:gt.scan.contact@gmail.com'>contact us</a> if you wish to see the reference genome for an unavailable organism.
+  If you are hosting your own instance, the items available in this list depend on the server's configuration file (See <a href=install>installation</a>).
+  GT-Scan will predict off-targets from the reference genome you select at this step.</p>
+  <p>Enter a rule in the next field.You can also select from a range of rules under the <span class=helper style='display:inline-block;' title=''>?</span> icon. With the default rule, GT-Scan will find and rank targets for the CRISPR/Cas9 system.<br>
+  GT-Scan initially finds targets in the DNA sequence that match the rule. A match to the default rule is any 20nt sequence ending in 'GG'.
+  XxN characters represent any nucleotide.<br>
+  GT-Scan subsequently locates potential off-targets from the reference genome that match the rule, for each target. A match to the default rule is any string of
+  nucleotides that has the same nucleotide at the X and x positions to the target. A match is not required at N positions.</p>
+  <p>GT-Scan handles rules for other CRISPR/Cas9 systems such as the S. aureus Cas9 (SaCas9). The PAM for the SaCas9 (NNGRRT) includes wildcards other than N. In this case, R can be used to find candidate targets with A or G in the specified position.</p>
+  <p>The allowed letters are: AaCcGgTtXxNR</p>
+  <h3 id=advanced>Advanced parameters</h3>      
+  <img src='../../static/images/submit-advanced.png' alt='Basic parameters'>
+  <p>The <b>off-target filter</b> allows you to specify a rule to prevent potential off-targets from the aforementioned rule from displaying in the results. For example,
+  the default filter will remove any sequence that doesn't end in -NGG or -NAG,(The PAM in the CRISPR/Cas system). The characters are the IUPAC codes for DNA nucleotides:</p>
+            <table>
+              <tr>
+                <td><b>A</b></td> <td>Adenine</td> <td><b>T</b></td> <td>Thymine</td> <td><b>C</b></td> <td>Cytosine</td> <td><b>G</b></td> <td>Guanine</td>
+              </tr>
+              <tr>
+                <td><b>M</b></td> <td>A|C</td> <td><b>R</b></td> <td>A|G</td> <td><b>W</b></td> <td>A|T</td> <td><b>S</b></td> <td>C|G</td>
+              </tr>
+              <tr>
+                <td><b>Y</b></td> <td>C|T</td> <td><b>K</b></td> <td>G|T</td> <td><b>V</b></td> <td>A|C|G</td> <td><b>H</b></td> <td>A|C|T</td>
+              </tr>
+              <tr>
+                <td><b>D</b></td> <td>A|G|T</td> <td><b>B</b></td> <td>C|G|T</td> <td><b>N</b></td> <td>A|C|G|T</td> <td></td> <td></td>
+              </tr>                                    
+            </table>
+  <p>The <b>high-specificity mismatch limit</b> is a limit to the number of mismatches allowed in 'high-affinity' positions. These are represented in the rule as the upper-case
+  characters ACGTX. </p>
+
+  <h3 id=information>Job information</h3>      
+  <img src='../../static/images/submit-info.png' alt='Basic parameters'>
+  <p>These fields are simply for your own convenience, and as stated, are both optional. The description will be appended to the current time to form the job name, and if you enter an email address,
+  you will be emailed a summary of the job submission with a link to the results page.</p>
+  <p>If you don't enter an email address, you should retain the jobID if you wish to return to the results page. You can enter this ID on the front page. Alternatively, any jobs you submit will be added to
+  the 'Recent jobs' list for the duration of your browser session (usually until you close your browser).</p>
+    
+    
+  <h2 id=output>Output</h2>
+  <p>The results page for each job consists of a side-bar displaying job information and two tables. The second table displays the potential off-targets for each candidate target.<br>
+  You can view the following example output <a href='../../results?id=example'>here</a>.</p>
+    
+  <h3 id =sidebar>Job information</h3>
+  <img src='../../static/images/results-side.png' style="float:left; margin:0 1em 1em 0;" alt='Results side-bar'>
+  <p>The side-bar lists information about the job you are currently viewing.</p>
+  <p><b>Job Name</b> is the time appended to the description you may have entered on the submission page.</p>
+  <p><b>Rule</b> is as you entered on the submission page, with high-affinity positions, <span class=positions>ATCGX</span>, in orange, low-affinity possitions, <span class=positions>atcgx</span>,
+  in blue and no-affinity positions, <span class=positions>N</span>, in green.</p> The length of the rule is in parentheses.
+  <p><b>Off-target filter</b> displays the filter rule specified. Potential off-targets not matching this string of IUPAC characters are removed from the results.</p>
+  <p><b>Maximum allowed number of high-specificity mismatches</b> displays the maximum number of mismatches allowed in high-specificity positions. The maximum number allowed in the entire sequence is still three, where mismatches in
+  no-specificity positions don't count towards the number of mismatches.</p>
+  <p><b>Genome</b> displays the reference genome you selected on the submission page.</p>
+  <p><b>Candidate Region ID</b> displays the description line from the input DNA sequence, if present.</p>
+  <p><b>Candidate Region</b> displays the locus where Bowtie aligned the DNA sequence from the FASTA file. If it displays an incorrect result or no
+  result at all, it's possible that the sequence you entered is not an unspliced genomic region. Or perhaps there's a bug in GT-Scan, in which case,
+  feel free to <a href='mailto:gt.scan.contact@gmail.com'>contact us!</a></p>
+  <p><b>Candidate Region Length</b> displays the number of nucleotides in the input DNA sequence.</p>
+  <p><b>Job execution time</b> displays the time from commencement of execution, to the output files being generated, in the format 'hh:mm:ss'.</p>  
+    
+  <h3 id =targets style="float:left;width:100%">Candidate target table</h3>
+  <img src='../../static/images/results-targets.png' style="margin:0 1em 1em 0;" alt='Results target table'>
+  <p>The first table, the candidate target table, contains a row for each target from the candidate region. The targets are ranked in ascending order by the number of potential off-targets they have,
+  where the 'Exact Match' column is the primary sorting column, followed by the 1, 2 and 3 Mismatches columns.</p>
+  <p>You can hover the mouse over the column headings to view information about each column. Selecting a candidate target will load up potential off-target information, for the selected target, in the potential off-target table.</p>
+  <p>The first two columns display the position of each candidate target in the the candidate genomic region, and the strand of the candidate genomic region that the candidate target is on. The third column displays the nucleotide
+  sequence of the target, in the same colour scheme as the rule.</p>
+  <p>The four remaining columns display the number of potential off-targets, based on the number of mismatches to the candidate target.
+  The targets are ranked by the values in these four columns. The highest-ranked targets, at the top of the table, have fewer similar (or identical) genomic sequences compared to the lowest-ranked targets.</p><br>
+  
+  <h3 id =offtargets>Potential off-target table</h3>
+  <img src='../../static/images/results-offtargets.png' alt='Results target table'>
+  <p>The second table displays the potential off-targets for the selected candidate target in the aforementioned table. The table in this document, 
+  shows the potential off-targets for the target represented by the first row of the candidate target table from this document. The 25 entries are
+  the 24 potential off-targets with three mismatches and the one potential off-target with two mismatches. Mismatches in no-specificity positions
+  don't count as a mismatch and therefore don't contribute to the number of mismatches.</p>
+  <p>The 'Potential Off-target Sequence' column displays the nucleotide sequence for each potential off-target, where mismatches between each
+  potential off-target and its associated candidate target are bold (except for mismatches at no-specificity positions).</p>
+  <p>The 'Number of Mismatches' columns display the total number of mismatches and the number of mismatches at high-specificity and low-specificity
+  (orange and blue, respectively) positions between potential off-targets and the selected candidate target.</p>
+  <p>The 'Chromosome', 'Position', and 'Strand' columns display the locus of the potential off-target in the reference genome.</p>
+  <p>The final column contains a link to a genome browser for each target. For targets with potential off-targets with minimal mismatches, such
+  as the first one in the example potential off-target table, it may be useful to view whether or not the potential off-target is exonic, for example.</p>
+  <p><b>Note: </b>If the number of potential off-targets for each number of mismatches exceeds 100, those potential off-targets will be excluded from
+  the potential off-target table.     However, the number of potential off-target columns in the first table will still represent the total
+  number of potential off-targets.</p>
+
+  <a href=# id=back-to-top><span class=arrow></span></a>
+</div>
+<br>
+</div>

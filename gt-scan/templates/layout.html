@@ -1,0 +1,60 @@
+$def with (content)
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta name='Description' content='$content.description'>
+  <title>$content.title</title>
+  <link rel='shortcut icon' href='$"{0}static/images/favicon.ico".format(content.relativedir)'>
+  $if content.cssfile:
+    $for f in content.cssfile.split():
+      <link rel=stylesheet href='$f'>
+  $if content.jsfiles:
+    $for f in content.jsfiles.split():
+      <script src='$f'></script>
+  <script>var online = true;</script>
+</head>
+
+<body>
+
+  <!-- Left hand side menu -->
+  <div id=menu>
+    <a href=$"{0}.".format(content.relativedir) class=menu-title>GT-Scan</a>
+    <ul>    
+      <li id=create><a href='$"{0}submit/".format(content.relativedir)'>Submit a job</a>
+      <li id=recent_menu class=parent><a href=#><span class='arrow $:content.menustatus[0][0]'></span>Recent jobs</a>
+      <ul id=recent_children style="$content.menustatus[0][1]">
+        $:content.recent
+        <li class=child><span id=crj_container><a id=crj_button href=#>Clear recent jobs</a><a id=crj_confirm href=$"{0}reset/".format(content.relativedir)>Confirm</a></span>
+      </ul>
+      <li id=doc_menu class=parent><hr><a href=#><span class='arrow $:content.menustatus[1][0]'></span>Documentation</a>
+      <ul id=doc_children>
+        <li id=manual class=child><a href='$"{0}docs/manual/".format(content.relativedir)'>Manual</a>
+        <li id=install class=child><a href='$"{0}docs/install/".format(content.relativedir)'>Installation manual</a>
+        <li id=release class=child><a href='$"{0}docs/release/".format(content.relativedir)'>Release notes</a>
+        <li id=faq class=child><a href='$"{0}docs/faq/".format(content.relativedir)'>FAQ</a>
+      </ul>
+      <li id=example><hr><a href='$"{0}example/".format(content.relativedir)'>Example output</a>
+      <li id=downloads><hr><a href='$"{0}downloads/".format(content.relativedir)'>Downloads</a>
+      <li id=citing><hr><a href='$"{0}citing/".format(content.relativedir)'>Citing</a>
+      <li id=contact><hr><a href='mailto:gt.scan.contact@gmail.com'>Contact</a>
+    </ul>
+  </div>
+  <script>$$('#$content.active').addClass('menu-selected')</script>
+  <script>parseDates()</script>
+  <!-- Main content -->
+    $:content
+  <!-- Footer -->
+  <div id=footer>
+    Version 1.1 -
+    <a href='$"{0}docs/release/".format(content.relativedir)'>Release notes</a><br>
+    <a href='$"{0}.".format(content.relativedir)'>Home</a> |
+    <a href='$"{0}submit/".format(content.relativedir)'>Submit a job</a> |
+    <a href='$"{0}docs/manual/".format(content.relativedir)'>Manual</a> |
+    <a href='$"{0}docs/faq/".format(content.relativedir)'>FAQ</a> |
+    <a href='mailto:gt.scan.contact@gmail.com'>Contact</a> |
+    <a href='$"{0}docs/copyright/".format(content.relativedir)'>Copyright</a>
+  </div>    
+</body>
+</html>

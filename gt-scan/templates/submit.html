@@ -1,0 +1,204 @@
+$def with (recent,form,menustatus)
+$var recent = recent
+$var menustatus = menustatus
+$var relativedir: ../
+$var active: create
+$var title: GT-Scan | Submit a job
+$var description: Complete the form to submit a GT-Scan job to the web-service.
+$var cssfile: ../static/css/gt-scan.css
+$var jsfiles:
+    ../static/js/jquery.min.js
+    ../static/js/menu.js
+    ../static/js/jquery.browser.min.js
+    ../static/js/jquery.tools.min.js
+    ../static/js/chosen.jquery.min.js
+    ../static/js/filechecker.js
+
+<div id="main">
+<form method="post" enctype="multipart/form-data">
+
+      <!-- First section of the submission form -->
+      <div class="material shadow_wrap">
+      <h3 class="heading">Basic parameters</h3>
+      <div class="contents">
+        <div class="row">
+          <div class="col-1" id="big-name">$:form.faPaste.description</div>
+          <div class="col-2" id="big-field">
+            <span class="helper" title="
+            <b>Specify a single DNA sequence of up to 4000bp</b>.
+            <p>GT-Scan will rank all candidate targets in this DNA sequence.  <b>Candidate
+            targets</b> are positions in your sequences that match the <b>target rule</b>.</p>
+            <p>To enter your DNA sequence:</p>
+            <ul>
+              <li>Type or paste your sequence into the text field, or
+              <li>Click 'Browse' and select a file on your computer containing your sequence.
+            </ul>
+            <p>The sequence should contain only standard DNA characters (<span class=positions>ACGT</span>). 
+            The sequence may be preceeded by a <a href='http://en.wikipedia.org/wiki/FASTA_format#Description_line' target=_blank>FASTA description line</a>, 
+            which will be included in the output report.</p>
+            Click <a id=example_button href='#'> here</a> to load an example sequence with a FASTA header.">?</span>  
+          </div>
+          <div class="col-3">
+            $:form.faPaste.render() $:form.faPaste.post
+            <div>
+              <button type="button" class="nice_button" id="pretty_overlay">Browse<input type="file" class="hide" id="file-select"></button>
+              <button type="button" class="nice_button" id="clear_sequence">Clear</button>
+            </div>
+          </div>
+          <div class="col-4" id="big-error">$:form.faPaste.note</div>
+        </div>
+
+        <div class="row">
+          <div class="col-1">$:form.refGenome.description</div>
+          <div class="col-2">
+            <span class="helper" title="
+            <b>Select a reference genome to search for potential off-targets.</b>
+            <p>GT-Scan will evaluate each candidate target from your genomic region by looking
+            for potential off-targets in the genome you select.  <b>Potential off-targets</b></p>
+            <ul>
+              <li>have at most three low- or high-specificity mismatches to the candidate target,
+              <li>do not exceed the high-specificity mismatch limit, and
+              <li>match the off-target filter.
+            </ul>
+            <p>For each candidate target, GT-scan separately reports the number of potential off-targets
+            with 0, 1, 2 or 3 mismatches.  GT-Scan uses this information to rank the candidate targets.</p>
+            <p>GT-Scan also allows you to view the potential off-targets for each candidate,
+            and ranks the potential off-targets based on the number of low- and high-specificity mismatches
+            to the candidate target. A potential off-target with low-specificity mismatches 
+            is presumably more likely to bind (and are therefore more severe) than
+            a potential off-target with an equal number of high-specificity mismatches.</p>">?</span>
+          </div>
+          <div class="col-3">$:form.refGenome.render()</div>
+          <div class="col-4">$:form.refGenome.note</div>
+        </div>
+        <div class="row">
+          <div class="col-1">$:form.rule.description</div>
+          <div class="col-2">
+            <span class="helper" title="
+            <b>Enter a rule for identifying candidate targets and defining the specificity of each position,
+            or click on one of the numbered example <u>target rule / off-target filter</u> pairs below to use it.
+            You can also edit the target rule or the off-target filter by typing in the respective boxes.</b>
+            <ol>
+              <li><a class=example_rule id=ex0 href=#>23nt CRISPR/Cas with 8 high-specificity 'seed' positions; -NAG allowed in off-targets:<br> 
+              <b>xxxxxxxxxxxxXXXXXXXXNGG / NNNNNNNNNNNNNNNNNNNNNRG</b></a>
+
+              <li><a class=example_rule id=ex1 href=#>23nt CRISPR/Cas with 9 high-specificity 'seed' positions; -NAG allowed in off-targets:<br> 
+              <b>xxxxxxxxxxxXXXXXXXXXNGG / NNNNNNNNNNNNNNNNNNNNNRG</b></a>
+
+              <li><a class=example_rule id=ex2 href=#>(<b>default</b>) 23nt CRISPR/Cas with 10 high-specificity 'seed' positions; -NAG allowed in off-targets:<br> 
+              <b>xxxxxxxxxxXXXXXXXXXXNGG / NNNNNNNNNNNNNNNNNNNNNRG</b></a>
+
+              <li><a class=example_rule id=ex3 href=#>23nt CRISPR/Cas for T7 or U6 with 10 high-specificity 'seed' positions; -NAG allowed in off-targets:<br> 
+              <b>gxxxxxxxxxXXXXXXXXXXNGG / NNNNNNNNNNNNNNNNNNNNNRG</b></a>
+
+              <li><a class=example_rule id=ex4 href=#>20nt conservative CRISPR/Cas with 5 high-specificity 'seed' positions; -NGG PAM only in off-targets:<br> 
+              <b>xxxxxxxxxxxxXXXXXNGG / NNNNNNNNNNNNNNNNNNGG</b></a>
+              <li><a class=example_rule id=ex5 href=#>26nt CRISPR/SaCas9 with 10 high-specificity 'seed' positions; NNGRRT PAM; -NNGRRT allowed in off-targets:<br>
+              <b>xxxxxxxxxxXXXXXXXXXXNNGRRT / NNNNNNNNNNNNNNNNNNNNNNGRRT</b></a>
+            </ol>
+            <p>GT-Scan uses the <b>target rule</b> to scan the genomic region for candidate targets,
+            and then uses it and the <b>off-target filter</b> to determine potential off-targets.</p>
+            <ul>
+              <li>Allowed characters in the target rule are: <span class=positions>AaCcGgTtXxNR</span>.
+              <li>Candidate targets <b>must match</b> the rule at positions where a base (<span class=positions>AaCcGgTt</span>) is specified.
+              <li>Candidate targets may contain <b>any base</b> at positions where the rule contains one of <span class=positions>XxN</span>.
+              <li>Candidate targets may contain <span class=positions>A</span> or <span class=positions>G</span> at positions where the rule contains an <span class=positions>R</span>.
+              <li>Upper- and lower-case letters denote high- and low-specificity positions, respectively.
+              <li>GT-Scan counts mismatches in off-targets at high- and low-specificity mismatches separately.
+              <li>GT-Scan ignores mismatches in off-targets at positions where the rule contains one of <span class=positions>NR</span>.
+              <li><b>Note:</b>The running time of GT-Scan increases exponentially with the number of <span class=positions>N</span> or <span class=positions>R</span> positions.
+            </ul>">?</span>
+          </div>
+          <div class="col-3"><span class="text_container">$:form.rule.render()<span id="rule_length"></span></span></div>
+          <div class="col-4">$:form.rule.note</div>
+        </div>
+      </div>
+      </div>
+
+      <!-- Second section of the submission form -->
+      <div class="material shadow_wrap">
+      <h3 class="heading">Advanced parameters</h3>
+      <div class="contents">
+        <div class="row">
+          <div class="col-1">$:form.filter.description</div>
+          <div class="col-2">
+            <span class="helper" title="
+            <b>Specify a rule that off-targets must match.</b>
+            <p>GT-Scan will filter out any potential off-targets that do not exactly match this rule. 
+            The off-target filter must be the same length as the target rule. 
+            Allowed characters in the off-target filter are the IUPAC codes for DNA:</p>
+            <table>
+              <tr>
+                <td><b>A</b></td> <td>Adenine</td> <td><b>T</b></td> <td>Thymine</td>
+              </tr>
+              <tr>
+                <td><b>C</b></td> <td>Cytosine</td> <td><b>G</b></td> <td>Guanine</td>
+              </tr>
+              <tr>
+                <td><b>M</b></td> <td>A|C</td> <td><b>R</b></td> <td>A|G</td>
+              </tr> 
+              <tr>
+                <td><b>W</b></td> <td>A|T</td> <td><b>S</b></td> <td>C|G</td>
+              </tr>
+              <tr>
+                <td><b>Y</b></td> <td>C|T</td> <td><b>K</b></td> <td>G|T</td>
+              </tr>  
+              <tr>
+                <td><b>V</b></td> <td>A|C|G</td> <td><b>H</b></td> <td>A|C|T</td>
+              </tr>
+              <tr>
+                <td><b>D</b></td> <td>A|G|T</td> <td><b>B</b></td> <td>C|G|T</td>
+              </tr>
+              <tr>
+                <td><b>N</b></td> <td>A|C|G|T</td> <td></td> <td></td>
+              </tr>                                    
+            </table>">?</span>
+          </div>
+          <div class="col-3"><span class="text_container">$:form.filter.render()<span id="filter_length"></span></span></div>
+          <div class="col-4">$:form.filter.note$:form.note</div>
+        </div>
+        <div class="row">
+          <div class="col-1">$:form.mismatches.description</div>
+          <div class="col-2">
+            <span class="helper" title="
+            <b>This value specifies the maximum number of allowed mismatches in high-specificity positions.</b><br>
+            GT-Scan will ignore potential off-targets with more high-specificity mismatches
+            than this limit.">?</span>
+          </div>
+          <div class="col-3">$:form.mismatches.render()</div>
+          <div class="col-4">$:form.mismatches.note</div>
+        </div> 
+      </div>
+      </div>
+
+      <!-- Third section of the submission form -->
+      <div class="material shadow_wrap">
+      <h3 class="heading">Job information (optional)</h3>
+      <div class="contents">
+        <div class="row">
+          <div class="col-1">$:form.jobName.description</div>
+          <div class="col-2">
+            <span class="helper" title="This description will be appended to the current time and added to 'Recent Jobs' (for your current session),
+            as well as being displayed on the results page and in the email you will receive when you submit your job.">?</span>
+          </div>
+          <div class="col-3">$:form.jobName.render()</div>
+          <div class="col-4">$:form.jobName.note</div>
+        </div>
+        <div class="row">
+          <div class="col-1">$:form.email.description</div>
+          <div class="col-2">
+            <span class="helper" title='Enter your email address if you want GT-Scan to send you a link to your job results. If this field is left blank you must either
+            record your job ID or keep your browser window open until GT-Scan completes your job.'>?</span>
+          </div>
+          <div class="col-3">$:form.email.render()</div>
+          <div class="col-4">$:form.email.note</div>
+        </div>
+      </div>
+      </div>
+      <div class="scan">
+        <!-- Placeholder for the submit button. -->
+        $:form.Scan.render()
+        <button type="button" class="big nice_button" id="reset">Reset</button>
+      </div>
+</form>
+</div>

@@ -1,0 +1,114 @@
+$def with (recent,menustatus,info,selected_job)
+$var recent = recent
+$var menustatus = menustatus
+$var relativedir: ../
+$var active: $selected_job
+$var title: GT-Scan | $selected_job
+$var description: The results page for the specified GT-Scan job.
+$var cssfile:
+    ../static/css/gt-scan.css
+    ../static/css/jquery.dataTables.css
+$var jsfiles:
+    ../static/js/jquery.min.js
+    ../static/js/jquery.browser.min.js
+    ../static/js/jquery.tools.min.js
+    ../static/js/jquery.dataTables.min.js
+    ../static/js/menu.js
+    ../static/js/gt-scan.js
+
+<!-- Summary of results -->
+<script>var jobId = "$selected_job"</script>
+<table id="info-table">
+<thead>
+  <tr id="info-heading">
+    <th colspan="2">$:info[0]</th>
+    <th></th>
+	<td></td>
+	<td></td>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <th><span>Rule ($:{len(info[2])-6}nt):</span></th>
+    <td><span class="seq_summary">$:info[1]</span></td>
+    <th>Candidate region id:</th>
+    <td colspan="2">$:info[5]</td>
+  </tr>
+  <tr>
+    <th><span>Off-target filter:</span></th>
+    <td><span class="seq_summary">$:info[2]</span></td>
+    <th><span>Reference genome:</span></th>
+    <td><span>$:info[4]</span></td>
+    <th rowspan="2" class="download-button"><a href="save">Download results</a></th>
+  </tr>
+  <tr>
+    <td colspan="2"><strong>Maximum allowed number of high-specificity mismatches:</strong> $:info[3]</td>
+    <th><span>Candidate region ($:info[7]nt):</span></th>
+    <td><span>$:info[6]</span></td>
+  </tr>
+</tbody>
+</table>
+  <div id="main">
+  
+    <!-- Target table -->
+    <table id="candidate-target-table" class="display">
+      <thead>
+        <tr>
+          <th rowspan="2"></th>
+          <th rowspan="2"></th>
+          <th rowspan="2"></th>
+          <th colspan="4" class="spanning">Number of Potential Off-targets</th>
+        </tr>
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Off-target table -->
+    <table id="off-target-table" class="display">
+      <thead>
+        <tr>
+          <th rowspan="2"></th>
+          <th colspan="3" class="spanning">Number of Mismatches</th>
+          <th rowspan="2"></th>
+          <th rowspan="2"></th>
+          <th rowspan="2"></th>
+          <th rowspan="2"></th>
+          <th rowspan="2"></th>    
+        </tr>
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>    
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

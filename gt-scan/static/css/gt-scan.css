@@ -1,0 +1,865 @@
+/*****************************************************************************
+* General formatting
+*****************************************************************************/
+body {
+	background-color: #ECECEC;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 100%;
+	margin: 0 0 3em;
+	padding-left: 16.2em;
+}
+
+html {
+	min-height:100%;
+	position:relative;
+}
+
+img {
+	max-width:100%;
+}
+
+button, input,form, .row{
+	font-size:100%
+}
+
+h1, h2, h3, h4{
+	color:#0b67cd;
+}
+
+a{
+	color:#0b67cd;
+	text-decoration:none;
+}
+
+a:hover{
+	color:#2e92cf;
+}
+
+select{
+	box-sizing:content-box;
+}
+
+.clear{
+	clear:both;
+}
+
+.hide{
+	display:none;
+}
+
+
+.material {
+	background-color: #fefefe;
+	border-radius: 2px;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12),0 3px 1px -2px rgba(0,0,0,.2);
+}
+
+
+/*****************************************************************************
+* Formatting for main content, ensuring centering and minimum width so content
+* doesn't get squashed
+*****************************************************************************/
+#main {
+	padding-left: 15.5em;
+	max-width: 80em;
+	min-width: 25em;
+	min-height: 100%;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+#footer {
+	position: absolute;
+	left: 15.5em;
+	right: 0;
+	bottom: 0;
+	height: 3em;
+	width: 26em;
+	margin: 0 auto;
+	text-align: center;
+}
+
+/* Formatting for the side menu */
+#menu {
+	margin-left: -18em;
+	width: 18em;
+	position: fixed;
+	top: 0;
+	left: 18em;
+	bottom: 0;
+	z-index: 100;
+	background-color: #222;
+	overflow-x: hidden;
+	color: #fff;
+	word-wrap: break-word;
+	font-size: 90%
+}
+
+#menu a,#menu .inactive>span,#menu .inactive>pre{
+	white-space:normal;
+	display:block;
+	color:inherit;
+	line-height:1.5em;
+	padding:0.6em 0 0.6em 0.7em;
+	text-decoration:none
+}
+
+#menu ul{
+	list-style:none;
+	margin:0;
+	padding:0;
+	position:relative;
+	text-transform:uppercase;
+}
+#menu .child{
+	text-transform:none;
+	background-color:#333;
+}
+
+/* Hover styles */
+#menu > ul > li > a:hover{
+	background-color:#0b67cd;
+}
+
+#menu .child:hover > a{
+	background-color:#2d89ef;
+}
+
+/* Main title */
+#menu .menu-title{
+	border-bottom:2px solid #333;
+	background-color:#191818;
+	padding:0.4em 0;
+	font-size:200%;
+	text-align:center;
+}
+
+/* Highlight current page */
+#menu .menu-selected a{
+	background-color:#0c73e5;
+}
+
+#menu .child.menu-selected a{
+	background-color:#4596f1;
+}
+
+/* CSS generated triangle for expandable menu items */
+#menu .arrow{
+	margin-right:0.2em;
+	display:inline-block;
+	border-style:solid;
+	width:0;
+	height:0;
+}
+
+#menu .right_arrow{
+	border-width:6px 0px 6px 11px;
+	border-color:transparent transparent transparent #fff;	
+}
+
+#menu .down_arrow{
+	border-width:11px 6px 0px 6px;
+	border-color:#fff transparent transparent transparent;
+}
+
+#menu hr{
+	height:1px;
+	background-color:#2f2f2f;
+	margin:0;
+}
+
+#create{
+	margin:10px;
+	border:solid 1px #333;
+	background-color:#111;
+}
+
+#create a{
+	padding:0;
+	text-align:center;
+	line-height:3em;
+}
+
+#menu #crj_container{
+	height:2.7em;
+	display:block;
+	position:static;
+}
+
+#menu #crj_button{
+	width:100%;
+	position:absolute;
+	display:block;
+}
+
+#menu #crj_confirm{
+	display:none;
+	position:absolute;
+	right:0;
+	padding:0.2em;
+	margin:0.6em;
+	border-radius:4px;
+	vertical-align:middle;
+	line-height:1.1em;
+	background-color:#af0000;
+}
+
+#menu #crj_confirm:hover{
+	background-color:red;
+}
+
+
+/* jQuery TOOLS tooltip */
+.tooltip{
+	text-align:left;
+	background-color:#2d89ef;
+	display:none;
+	font-size:90%;
+	min-width:100px;
+	max-width:720px;
+	padding:15px;
+	color:#fff;
+	z-index:999;
+	box-shadow:0 0 20px rgba(0,0,0,0.6);
+	border-radius:3px;
+}
+
+.tooltip a{
+	text-decoration:underline;
+	color:#fff;
+}
+
+.tooltip a:hover{
+	color:#ccc;
+}
+
+#citation{
+	width:100%;
+	height:100%;
+	border:0;
+	position:fixed;
+}
+
+
+/*****************************************************************************
+* Submit.html stuff
+*****************************************************************************/
+
+.shadow_wrap{
+	margin: 2em 0;
+	min-width:40em;
+}
+
+.heading{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	margin: 0;
+	padding: 8px 10px;
+}
+
+/* Makes input forms look more modern */
+.input_form{
+	border:1px solid #bbb;
+	padding:0.3em;
+	background-color:#fff;
+	width:25em;
+	font-size:90%;
+}
+
+/* Boxes containing form elements */
+.contents{
+	padding:5px;
+
+}
+
+.contents #faPaste{
+	width:100%;
+	height:15em;
+}
+
+/* Table row for each input field and its title/error message */
+
+/* Styles the spans as table-cells to allow more consistent formatting upon window resize */
+.row [class|='col']{
+	display:table-cell;
+	vertical-align:middle;
+}
+
+.col-1, .col-3, .col-4{
+	padding:0.1em;
+}
+
+.col-1{
+	line-height:100%;
+	width:200px;
+	text-align:right;
+}
+
+/* Adds spacing either side of .helper and ensures it doesn't get squashed on window resize*/
+.col-2{
+	padding-left:20px;
+	padding-right:20px;
+	min-width:18px;
+}
+
+/* Adds some whitespace between error message and form */
+.col-4{
+	padding-left:10px;
+}
+
+/* Aligns the title and error message at the top of the large text box without messing up the middle alignment of the other single line inputs */
+#big-name, #big-field, #big-error{
+	vertical-align:top;
+	padding-top:10px;
+}
+/* Style for the ? icons*/
+.helper{
+	cursor:pointer;
+	font-size:70%;
+	padding:3px;
+	width:10px;
+	line-height:10px;
+	border-radius:50%;
+	background-color:#555;
+	color:#fff;
+	display:block;
+	text-align:center;
+}
+
+/* Better file upload button */
+.nice_button{
+	border:0;
+	display: inline-block;
+	padding:0;
+	margin:0 0.2em 0.4em 0;
+	width:8.25em;
+	height:1.7em;
+	background-color:#555;
+	color:#fff;
+	cursor:pointer;
+	text-align:center;
+}
+
+.nice_button.big {
+	height:2.1em;
+	width:11em;
+}
+
+.nice_button:hover{
+	background-color:#2d89ef;
+}
+
+/* Style for the form submit button.*/
+.scan {
+	margin-left:150px;
+}
+
+/* Make sure monospace */
+#rule,#filter,#faPaste{
+	font-family:Courier, monospace;
+}
+
+.text_container{
+	position:relative;
+}
+
+#rule,#filter{
+	width:22.8em;
+	height:16px;
+	padding-right:2.5em;
+}
+
+#rule_length,#filter_length{
+	padding-right:0.3em;	
+	line-height:22px;
+	position:absolute;
+	display:inline-block;
+	text-align:right;
+	right:0;
+	top:0;
+}
+
+#filter{
+	text-transform:uppercase;
+}
+
+
+/*****************************************************************************
+* Status.html stuff
+*****************************************************************************/
+#status_list{
+	display:inline-block;
+	list-style-type:none;
+	line-height:150%;
+}
+
+.spinner{
+	display:inline-block;
+	height:100px;
+	margin:0 auto;
+	right:0;
+	width:100px;
+}
+
+#status > .heading {
+	background: #0b67cd;
+	color: #fff;
+	font-size: 1em;
+}
+
+/*****************************************************************************
+* Results.html stuff
+*****************************************************************************/
+/* Formats the DNA sequence strings in each table */
+td.sequence{
+	font-family:"Courier New", Courier, monospace;
+	font-size:105%;
+	white-space:nowrap;
+}
+
+/* Remove the margin from sequences in pre tags to keep consistent with other items */
+.seq_summary{
+	white-space:pre;
+	font-family:monospace;
+}
+
+/* Font colours */
+.r{
+	color:rgb(175, 0, 0);
+}
+
+.g{
+	color:rgb(0, 175, 0);
+}
+
+.b{
+	color:rgb(0, 0, 255);
+}
+
+.y{
+	color:#e38217;
+}
+
+/* Different shade of blue to increase contrast of blue font in side menu */
+#menu .b{
+	color:rgb(75, 75, 255);
+}
+
+/* Style for the top bar on both tables. */
+[class|='title']{
+	float:left;
+	line-height:30px;
+	font-size:110%;
+}
+
+#info-table{
+	min-width:65em;
+	border-spacing:0; 
+	line-height:1.5em;
+	width:100%;
+	background-color:#fff;
+}
+
+#info-table thead{
+	background-color:#0b67cd;
+	color:#eee;
+}
+
+.download-button{
+	border-radius:5px 0 0 0;
+	background-color:#74b1f4;
+}
+
+.download-button a{
+	display:block;
+	width:100%;
+	line-height:3em;
+	color:#222;
+
+}
+
+.download-button:hover{
+	background-color:#2d89ef;
+	transition:all 0.1s ease-in-out;		 
+}
+
+.download-button a:hover{
+	color:#fff;
+	transition:all 0.1s ease-in-out;		 
+}
+
+
+/*****************************************************************************
+* Documentation stuff
+*****************************************************************************/
+.documentation{
+	margin:20px auto;
+	max-width:740px;
+	overflow:hidden;
+	padding: 20px 60px;
+}
+
+.script{
+	white-space:nowrap;
+	font-family:monospace;
+	background-color:#ccc;
+	color:#0b67cd;
+	overflow:hidden;
+	padding:0 5px 0 5px;
+}
+
+.copyright{
+	white-space:nowrap;
+	font-family:monospace;
+}
+
+.positions{
+	font-size:130%;
+	white-space:nowrap;
+	font-family:monospace;
+}
+
+hr{
+	border:0;
+	height:2px;
+	background-color:#0b67cd;
+}
+
+.documentation p{
+	margin-bottom:0;
+}
+
+.documentation ul{
+	margin-top:0;
+}
+
+.documentation ul{
+	list-style-type:square;
+}
+
+
+/*****************************************************************************
+ * Index.html stuff
+ ****************************************************************************/
+#main_content{
+	display: inline-block;
+	width:77%;
+}
+
+#main_right{
+	min-width:10em;
+	margin-top:2em;
+	float:right;
+	width:20%;
+}
+
+.main_item{
+	margin-bottom:1em;
+	padding:1em;
+}
+
+.main_item h3{
+	margin:0;
+}
+.main_item span{
+	display:block;
+}
+.main_item .date{
+	color: #0b67cd;
+	font-style: italic;
+	margin-top:1em;
+}
+.main_item .input_form{
+	width:96%;
+	margin:0;
+	margin-bottom:1em;
+	padding:2%;
+}
+
+.main_item .nice_button{
+	float:none;
+	width:7em;
+	margin-left:10%;
+}
+
+
+/*****************************************************************************
+ * 'Chosen' drop down menu
+ ****************************************************************************/
+.chosen-container{
+	box-sizing:content-box;
+	display:inline-block;
+	font-size:91%;
+	position:relative;
+	vertical-align:middle;
+}
+
+.chosen-container .chosen-drop{
+	position:absolute;
+	top:1px;
+	left:-9999px;
+	z-index:1010;
+	box-sizing:border-box;
+	width:100%;
+	border:1px solid #bbb;
+	background-color:#fff;
+}
+
+.chosen-container.chosen-with-drop .chosen-drop{
+	left:0;
+}
+
+.chosen-container a{
+	cursor:text;
+}
+
+.chosen-container-single .chosen-single{
+	position:relative;
+	display:block;
+	overflow:hidden;
+	padding:0 0 0 8px;
+	height:1.7em;
+	border:1px solid #bbb;
+	background-color:#fff;
+	background-clip:padding-box;
+	color:#444;
+	text-decoration:none;
+	white-space:nowrap;
+	line-height:24px;
+}
+
+.chosen-container-single .chosen-default{
+	color:#999;
+}
+
+.chosen-container-single .chosen-single span{
+	display:block;
+	overflow:hidden;
+	margin-right:26px;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+
+.chosen-container-single .chosen-single-with-deselect span{
+	margin-right:38px;
+}
+
+.chosen-container-single .chosen-single abbr{
+	position:absolute;
+	top:6px;
+	right:26px;
+	display:block;
+	width:12px;
+	height:12px;
+	font-size:1px;
+}
+
+.chosen-container-single .chosen-single div{
+	position:absolute;
+	top:0;
+	right:0;
+	display:block;
+	width:18px;
+	height:100%;
+}
+
+.chosen-container-single .chosen-search{
+	position:relative;
+	z-index:1010;
+	margin:0;
+	padding:0px 4px;
+	white-space:nowrap;
+}
+
+.chosen-container-single .chosen-search input[type="text"] {
+	box-sizing: border-box;
+	margin: 1px 0;
+	padding: 4px 20px 4px 5px;
+	width: 100%;
+	height: auto;
+	outline:0;
+	border: 0;
+	font-family: sans-serif;
+	line-height: normal;
+	border-radius: 0;
+}
+
+.chosen-container-single .chosen-drop{
+	margin-top: -1px;
+	border-radius: 0 0 4px 4px;
+	background-clip: padding-box;
+	box-shadow: 0 10px 10px rgba(0,0,0,0.6);
+}
+
+.chosen-container-single.chosen-container-single-nosearch .chosen-search {
+	position: absolute;
+	left: -9999px;
+}
+
+.chosen-container .chosen-results {
+	position: relative;
+	overflow-x: hidden;
+	overflow-y: auto;
+	margin: 0 0 4px 0;
+	padding: 0;
+	max-height: 240px;
+	border-top: #ccc 1px solid;
+	-webkit-overflow-scrolling: touch;
+}
+
+.chosen-container .chosen-results li {
+	display: none;
+	margin: 0;
+	padding: 5px 6px;
+	list-style: none;
+	line-height: 15px;
+}
+
+.chosen-container .chosen-results li.active-result {
+	display: list-item;
+	cursor: pointer;
+}
+
+.chosen-container .chosen-results li.disabled-result {
+	display: list-item;
+	color: #ccc;
+	cursor: default;
+}
+
+.chosen-container .chosen-results li.highlighted {
+	background-color: #3875d7;
+	color: #fff;
+}
+
+.chosen-container .chosen-results li.no-results {
+	display: list-item;
+	background-color: #f4f4f4;
+}
+
+.chosen-container .chosen-results li.group-result {
+	display: list-item;
+	font-weight: bold;
+	cursor: default;
+}
+
+.chosen-container .chosen-results li.group-option {
+	padding-left: 15px;
+}
+
+.chosen-container .chosen-results li em {
+	font-style: normal;
+	text-decoration: underline;
+}
+
+
+/*****************************************************************************
+ * Program logo styling
+ ****************************************************************************/
+.logo {
+	display: inline-block;
+	padding-top: 0.5em;
+}
+.logo > img {
+	display: inline-block;
+	width: 5em;
+	height: 5em;
+	border-style: none;
+	margin-right: 0.2em;
+}
+.logo > div {
+	display: inline-block;
+	vertical-align: top;
+}
+.logo > div > h1 {
+	font-size: 3.5em;
+	letter-spacing: -0.06em;
+	line-height: 60px;
+	margin: 0;
+	padding: 0;
+	text-shadow: 0.04em 0.06em 0.05em #666;
+}
+
+.logo > div > h2 {
+	font-family: Helvetica, sans-serif;
+	font-size: 1.0em;
+	line-height: 20px;
+	letter-spacing: -0.06em;
+	margin: 0;
+	padding: 0;
+}
+
+#main-heading {
+	margin-top: 1em;
+	position: relative;
+}
+
+#embl-logo {
+	bottom: 0;
+	display: inline-block;
+	height: auto;
+	position: absolute;
+	right: 0;
+	width: 9em;
+}
+
+
+/*****************************************************************************
+ * Back-to-top arrow
+ ****************************************************************************/
+#back-to-top{
+	display:none;
+	height:49px;
+	width:49px;
+	background-color:#555;
+	border-radius:50%;
+	position:fixed;
+	text-align:center;
+	bottom:1em;
+	right:1em;
+}
+
+#back-to-top:hover{
+	background-color:#2d89ef
+}
+
+#back-to-top > .arrow{
+	display:inline-block;
+	border-style:solid;
+	width:0;
+	height:0;
+	margin-top:8px;
+	border-width:0px 15px 25px 15px;
+	border-color:transparent transparent #fff transparent;
+}
+
+
+/*****************************************************************************
+ * Responsive stuff
+ ****************************************************************************/
+/* Hides the side menu for small screen sizes */
+@media (max-width:1120px){
+	#site-logo{width:10em;}
+}
+
+@media (max-width:860px){
+	#site-logo{display:none;}
+}
+
+@media (max-width:1000px) {
+	#main_content, #main_right{float:none;width:inherit;}
+}
+
+
+
+
+
+#down {
+	background-color: rgb(191, 127, 11);
+	text-transform: none;
+	padding: 5px;
+}
+
+#down a {
+	display: inline-block;
+	line-height: inherit;
+	padding: 0px;
+}

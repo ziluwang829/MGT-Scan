@@ -1,0 +1,119 @@
+$def with (recent,menustatus)
+$var recent = recent
+$var menustatus = menustatus
+$var relativedir:
+$var active: none
+$var title: GT-Scan
+$var description: GT-Scan is a flexible search tool to assist in genome editing or regulatory interference with the CRISPR system. It enables the user to design guides with a high specificity for their genomic region of interest.
+$var cssfile:
+    static/css/gt-scan.css
+$var jsfiles:
+    static/js/jquery.min.js
+    static/js/menu.js
+
+<div id="main">
+<div id="main_content">
+    <div id="main-heading">
+        <div class="logo">
+            <img src="static/images/gtscan_logo.png" alt="GT-Scan Logo">
+                <div>
+                    <h1>GT-Scan</h1>
+                    <h2>Identifying Unique Genomic Targets</h2>
+                </div>
+        </div>
+        <div id="embl-logo">
+            <a href="https://www.embl-abr.org.au/"><img src="static/images/EMBL.logo.gif" alt="EMBL ABR"></a>
+        </div>        
+    </div>
+    <hr>
+    <div>
+        <h3>Finding optimal targets for genome editing or regulatory interference
+        using CRISPR/Cas or zinc-finger nuclease systems.</h3>
+          
+        <h4> <u>Uses</u> </h4>
+        <p>Two questions GT-Scan can help answer are:</p>
+        <ol>
+          <li>What are the best <b>candidate targets</b> in my genomic region of interest?
+          <li>How many <b>potential off-targets</b> does the target I am using have in the genome?
+        </ol>
+        <p> <b>Candidate targets</b> are places in your genomic region that match a
+        user-defined <b>target rule</b>.
+        <b>Potential off-targets</b> are other places in the genome that are the
+        same as the candidate target except for <b>up to three mismatches</b>, and
+        that match a user-defined <b>off-target filter</b>. </p>
+
+        <h4> <u>Results</u> </h4>
+        <p>GT-Scan <b>finds each candidate target</b> in your region of interest and reports:</p>
+        <ul>
+          <li>the <b>number</b> of potential off-targets it has in the genome, 
+          <li>the genomic sequence and <b>location</b> of each potential off-target, and
+          <li>how <b>similar</b> each potential off-target is to it.
+        </ul>
+        <p>GT-Scan <b>sorts candidate targets by how many potential off-targets</b> they have,
+        rather than using a (possibly obscure) ranking formula.  It sorts successively
+        by the number of potential off-targets at
+        <b>four levels of increasing severity</b>: 0, 1, 2 or 3 mismatches.<p>
+        <p>For each candidate target, GT-scan describes each of its potential off-targets reporting:</p>
+        <ul>
+          <li>the total number of mismatches,
+          <li>the number of low-specificity mismatches,
+          <li>the number of high-specificity mismatches,
+          <li>the positions of the mismatches, and
+          <li>a link to the potential off-target in the Ensembl genome browser.
+        </ul>
+        <p>This information can help you decide on the best candidate target (Question 1)
+        or evaluate a given target (Question 2).</p>
+
+        <h4> <u>Flexibility</u> </h4>
+        <p>GT-Scan lets you define a <b>target rule</b> that specifies</p>
+        <ul>
+          <li>the length of candidate targets,
+          <li>required letters in candidate targets (e.g., the 
+            <span class="positions">3'-NGG</span> for CRISPR/Cas systems), and
+          <li>the level of binding specificity (zero, low or high) at each position.
+        </ul>
+        <p>GT-Scan also lets you define an <b>off-target filter</b>.
+        Potential off-targets that don't match the filter are ignored.
+        For example, you can require off-targets to match either 
+        <span class="positions">3'-NAG</span> or
+        <span class="positions">3'-NGG</span> for CRISPR/Cas systems.</p>
+        <p>GT-Scan can also ignore potential off-targets
+        with more than a <b>maximum number of high-specificity mismatches</b> that you specify.</p>
+    </div>
+</div>
+      
+<div id="main_right">
+    <div class="main_item material">
+        <form action="status" method="get">
+            <h3>Retrieve a job:</h3>
+            <p>Enter a Job ID here to view the results page for that job:</p>
+            <input class="input_form" name="id" type="text">
+            <button class="nice_button home_button">Go</button>
+        </form>
+    </div>
+      
+    <div class="main_item material">
+        <h3>News:</h3>
+	<span class="date">March 2016</span>
+	<span>Added zebrafish genome GRCz10. Moved older genome versions to "Archived" section.</span>
+
+	<span class="date">January 2016</span>
+	<span>Added human genome GRCh38.</span>
+
+	<span class="date">November 2015</span>
+	<span>The service has been restored following an issue with submitting jobs. Sorry for the downtime and thank you for your patience!</span>
+
+	<span class="date">October 2015</span>
+	<span>Added support for rice, barley and maize genomes.</span>
+
+        <span class="date">June 2015</span>
+        <span>Added support for the S.&nbsp;aureus Cas9 PAM (<a href="http://www.nature.com/nature/journal/v520/n7546/full/nature14299.html">NNGRRT</a>).</span>
+
+        <span class="date">February 2015</span>
+        <span>Added support for the tomato genome (ITAG2.4).</span>
+
+        <span class="date">May 2014</span>
+        <span>GT-Scan is released! Feel free to <a href="mailto:gt.scan.contact@gmail.com">contact us</a> if you notice any problems or have questions.</span>
+    </div>
+</div>
+</div>

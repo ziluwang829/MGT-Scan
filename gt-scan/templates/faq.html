@@ -1,0 +1,49 @@
+$def with (recent,menustatus)
+$var recent = recent
+$var menustatus = menustatus
+$var relativedir: ../../
+$var active: faq
+$var title: GT-Scan | FAQ
+$var description: GT-Scans frequently asked question. Alternatively, feel free to contact us.
+$var cssfile:
+    ../../static/css/gt-scan.css
+$var jsfiles:
+    ../../static/js/jquery.min.js
+    ../../static/js/menu.js 
+
+<div id=main>
+<div class="documentation material">
+    <h1 id=top>Frequently asked questions</h1>
+
+    <h3>Table of contents:</h3>
+    <ul>
+      <li><a href=#ref>The reference genome for my organism of interest isn't available</a>
+      <li><a href=#exon>How can I tell if candidate targets are in introns or exons?</a>
+      <li><a href=#didnt>GT-Scan didn't find the candidate targets from my DNA sequence.</a>
+      <li><a href=#offset>Can I find targets for CRISPR/Cas9n at a certain offset?</a>
+      <li><a href=#question>I have another question</a>
+    </ul>
+    <hr>
+
+    <h2 id=ref>The reference genome for my organism of interest isn't available</h2>
+    <p>We currently support a wide range range of genomes, and are constantly expanding the selection. If your genome of interest isn't available, feel free to email us with a link to the reference genome and we will add it to the database.</p>
+
+    <h2 id=exon>How can I tell if candidate targets are in introns or exons?</h2>
+    <p>GT-Scan requires an unspliced DNA sequence to provide the best results, however you may only be interested in exonic targets. Services such as the UCSC genome browser allow you to capitalize exons when you download DNA sequences. GT-Scan retains the capitalization of the original FASTA file in the results, so determining if a target is in an exon, is as easy as seeing if the candidate target is capitalized.</p>
+
+    <h2 id=didnt>GT-Scan didn't find some known candidate targets from my DNA sequence.</h2>
+    <p>To keep file sizes down, GT-Scan excludes candidate targets with over 25 potential off-targets that are an exact match.</p>
+
+    <h2 id=offset>Can I find targets for CRISPR/Cas9n at a certain offset?</h2>
+    <p>You can change the rule to find offset CRISPR/Cas targets on different strands. For example, CCxxxxxxxxxxxxxxxxxxxxx<u>xxxxx</u>xxxxxxxxxxxxxxxxxxxxxGG will find every target-pair at an offset of +5 (underlined for illustrative purposes).<br>
+    GT-Scan will return any candidate targets from the input sequence that match the rule. The first 23nt of each candidate target is the reverse complement of the first target-pair, and the last 23nt is the second target-pair.
+    Although GT-Scan won't find potential off-targets in this scenario, off-targets are less of an issue with Cas9n.<br>
+    Alternatively, you can use the first 23nt or the last 23nt of a candidate target as the input for a new GT-Scan job, with the default rule for example, to find it's potential off-targets. </p>
+
+    <h2 id=question>I have another question</h2>
+    <p>If you have a question that we haven't answered in the GT-Scan documentation, feel free to <a href='mailto:gt.scan.contact@gmail.com'>contact us</a> and we will reply as soon as possible.</p>
+
+    <a href=# id=back-to-top><span class=arrow></span></a>
+</div>
+<br>
+</div>

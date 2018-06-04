@@ -1,0 +1,205 @@
+$def with (recent)
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset=utf-8>
+	<title>GT-Scan | Installation manual</title>
+	<link rel='shortcut icon' href='data:image/ico;base64,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'>
+	<link rel=stylesheet href='../static/css/gt-scan.css'>
+</head>
+
+<body>
+	<!-- Left hand side menu. Recent searches inserted to $$:recent by gt-scan_frontend.py -->
+	<div  id=menu>
+		<a href=.. class=menu-title>GT-Scan</a>
+		<ul>	
+			<li id=create><a href=../submit>Submit a job</a>
+			<li id=recent-menu class=parent><a href=#>   <span class=closed>&#x25B6; </span><span class=open>&#x25BC;  </span>Recent jobs</a>
+			<ul  id=recent-children>
+			$:recent
+			<li class=child><a href=../reset>Clear recent jobs</a>
+			</ul>
+			<li class=parent id=documentation-menu><a href=#>   <span class=closed>&#x25B6; </span><span class=open>&#x25BC;  </span>Documentation</a>
+			<ul id=documentation-children>
+				<li id=manual class=child><a href=manual>Manual</a>
+				<li id=install class='child menu-selected'><a href=install>Installation manual</a>
+				<li id=release class=child><a href=release>Release notes</a>
+				<li id=faq class=child><a href=faq>FAQ</a>
+				<li id =example class=child><a href='../results?id=example'>Example output</a>
+			</ul>
+			<li id=downloads><a href=../downloads>Downloads</a>
+			<li id=contact><a href='mailto:gt.scan.contact@gmail.com'>Contact</a>
+		</ul>
+	</div>
+	<div id=menu-expander><hr><hr><hr></div>
+	<div id=menu-closer><hr><hr><hr></div>
+	
+	<!-- Wrapper for main section -->
+	<div id=main>	
+	<div id=documentation>
+
+
+
+
+		<h1 id=top>Installation manual for a PBS setup</h1>
+
+
+
+		<h3>Table of contents:</h3>
+		<ul>
+			<li><a href=#prereqs>Prerequisite software</a>
+			<li><a href=#opal>Configure Opal</a>
+			<li><a href=#mysql>Set up MySQL</a>
+			<li><a href=#pbswrap>Setup PBS qsub wrappers</a>
+			<li><a href=#tomcat>Configure Tomcat</a>
+			<li><a href=#deploy>Install opal and deploy the GT-Scan service</a>
+		</ul>
+		<hr>
+		<h2 id=prereqs>Prerequisite software</h2>
+		<ul>
+		<li><a href=http://www.oracle.com/technetwork/java/javase/downloads/index.html>JDK 7</a> or <a href=http://openjdk.java.net/install/>Open JDK 7</a>
+		<li><a href=http://ant.apache.org/>Apache Ant</a>
+		<li><a href=http://dev.mysql.com/downloads/>MySQL Server</a>
+		</ul>
+		<h2>Configure Opal</h2>
+		
+		<ul>
+			<li>Edit the file, opal.properties:<br>
+			<span class=script>vi OPAL_DIRECTORY/etc/opal.properties</span><br>
+
+			<li>Update this line to the URL of your Tomcat server:<br>
+			<span class=script>tomcat.url=http://crispr.braembl.org.au</span><br>
+
+			<li>Uncomment this line:<br>
+			<span class=script>working.dir=opal-jobs</span><br>
+
+			<li>Comment out this line:<br>
+			<span class=script>opal.jobmanager=edu.sdsc.nbcr.opal.manager.ForkJobManager</span><br>
+
+			<li>Uncomment this line:<br>
+			<span class=script>opal.jobmanager=edu.sdsc.nbcr.opal.manager.PBSJobManager</span><br>
+		</ul>
+		
+		<ul>
+			<li>Edit the file, build.properties:<br>
+			<span class=script>vi OPAL_DIRECTORY/build.properties</span><br>
+			<li>And specify your Tomcat directory:<br> 
+			<span class=script>catalina.home = /var/bin/apache-tomcat-6.0.36</span><br>
+		</ul>
+		
+		<ul>
+			<li>Replace the following files in Opal:<br>
+			<span class=script>cp GT-SCAN_DIRECTORY/etc/PBSJobManager.java OPAL_DIRECTORY/src/edu/sdsc/nbcr/opal/manager/PBSJobManager.java</span><br>
+			<span class=script>cp GT-SCAN_DIRECTORY/etc/hibernate-opal.cfg.xml OPAL_DIRECTORY/etc/hibernate-opal.cfg.xml<br></span>
+		</ul>
+
+		<h2>Set up MySQL</h2>
+		<ul>
+			<li>Set up mysql database and opal config for mysql<br>
+			Start and configure mysql for the first time (you may need root privileges):<br>
+			<span class=script>chkconfig mysqld on<br>
+			service mysqld start<br>
+			/usr/bin/mysql_secure_installation</span><br>
+
+			<li>For security reasons, you should answer 'yes' (Y) to the following:<br>
+			<div class=script>Set root password?<br>
+			Remove anonymous users?<br>
+			Disallow root login remotely?<br>
+			Remove test database and access to it?</div><br>
+
+			<li>Answer 'yes' (Y) to:<br>
+			<span class=script>Reload privilege tables now?</span><br>
+
+			<li>Run mysql command as root:<br>
+			<span class=script>mysql -u root -p</span><br>
+
+			<li>Then, run the following commands:<br>
+			<div class=script>CREATE DATABASE opal2_db;<br>
+			CREATE USER 'opal_user'@'localhost' IDENTIFIED BY 'opal_passwd';<br>
+			GRANT ALL ON *.* TO 'opal_user'@'localhost' WITH GRANT OPTION;<br>
+			GRANT ALL ON opal2_db.* TO 'opal_user'@'localhost';<br>
+			FLUSH PRIVILEGES;<br>
+			exit;</div>
+		</ul>
+
+
+		<h2>Setup PBS qsub wrappers:</h2>
+		<ul>
+			<li>Change to PBS directory and move qsub to qsub.orig:
+			<ul class=script>cd `grep PBS_EXEC /etc/pbs.conf |awk -F"=" '{print $2}'`<br>
+			cd bin<br>
+			mv qsub qsub.orig</ul><br>
+
+			<li>Create qsub wrapper:<br>
+			<li><span class=script>vi qsub</span><br>
+			<li>Add the following to the file:<br>
+			<div class=script>#!/usr/bin/php<br>
+			&lt;?php<br>
+			$$cmd = '/usr/pbs/default/bin/qsub.orig -l select=1:mem=6GB:NodeType=any -l walltime=06:00:00 ' .  $argv[1];<br>
+			$$res = exec($$cmd, $$output, $$return_var);<br>
+			$$res = @file_put_contents('/ebi/iscratch/crispr/logs/qsub/' . @date('Y-m-d') . '.log',  @date('H:i:s') .' ' . $$argv[1] . ' '. @join(' ', $$output)  . "\n", FILE_APPEND);<br>
+			echo join("\n",$$output) ."\n";<br>
+			exit($$return_var);<br>
+			?></div>
+			
+			<li>Make the file executable:<br>
+			<span class=script>chmod 755 qsub</span><br>
+
+		</ul>
+
+
+ 
+		<h2>Configure Tomcat:</h2>
+		<ul class=script>cp OPAL_DIRECTORY/etc/opal.xml  $$CATALINA_HOME/conf/Catalina/localhost/<br>
+			cd $CATALINA_HOME/webapps<br>
+			ln -s /ebi/iscratch/crispr/CLIENTS-RESULTS/  opal-jobs
+		</ul>
+
+ 
+ 
+		<h2>Install opal and deploy the GT-Scan service</h2>
+		<ul>
+			<li>Install Opal:<br>
+			<span class=script>cd OPAL_DIRECTORY<br>
+			ant install<br>
+			cp lib/log4j* $$CATALINA_HOME/webapps/opal2/WEB-INF/lib/</span><br>
+
+			<li>Start Tomcat:<br>
+			<span class=script>$$CATALINA_HOME/bin/startup.sh</span>
+			<li>Deploy GT-Scan Opal service:
+			<span class=script>ant deploy -DserviceName=gt-scan -DappConfig=configs/gt-scan_config.xml</span>
+		</ul>
+		
+
+		<p></p>
+
+	<a href=# class=back-to-top><span class=arrow></span></a>
+	</div>
+	</div>
+	<div id=footer><a href=../>Home</a> | <a href=../submit>Submit a job</a> | <a href=manual>Manual</a> | <a href=install>Installation</a> | <a href=release>Release notes</a> | <a href=faq>FAQ</a> | <a href=../downloads>Downloads</a> | <a href='mailto:gt.scan.contact@gmail.com'>Contact</a></div>
+
+	<script src='../static/js/jquery.min.js'></script>
+	<script src='../static/js/menu.js'></script>
+	<script>
+	jQuery(document).ready(function() {
+		var offset = 220;
+		var duration = 500;
+		jQuery(window).scroll(function() {
+			if (jQuery(this).scrollTop() > offset) {
+				jQuery('.back-to-top').fadeIn(duration);
+			} else {
+				jQuery('.back-to-top').fadeOut(duration);
+			}
+		});
+		
+		jQuery('.back-to-top').click(function(event) {
+			event.preventDefault();
+			jQuery('html, body').animate({scrollTop: 0}, duration);
+			return false;
+		})
+	});
+	</script>
+	
+</body>
+</html>
