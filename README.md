@@ -82,7 +82,7 @@ source("GTScan.R")
 ```
 
 
-#11. Clear db files in /tmp/gtscan.db.
+#12. Clear temporary .db files in /tmp/gtscan.db.
 
 The result, shown as a .tab file, may look like this:
 
