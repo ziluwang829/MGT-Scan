@@ -86,11 +86,11 @@ source("GTScan.R")
 ## RESULT
 
 The result, shown as a .tab file, may look like this:
-
+```
 chr1 714299 714318 - CGCCCGGCGCCGAAGACCGG chr1 714026 714045 + CCAACGGCCCACCTCTATGG
 
 chr1 714299 714318 - CGCCCGGCGCCGAAGACCGG chr1 714026 714045 + CCAACGGCCCACCTCTATGG
-
+```
 Each line represents a pair of candidate sequences with their chromosome numbers, locations,
 and directions. The distance between each two should be greater than the given minimum distance.
 These target candidates are likely to have few to no mismatches. 
