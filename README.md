@@ -5,7 +5,7 @@ Modified GT-Scan
 
 This program is a slightly modified version of the GT-Scan. In this version, multiple sequences in a single
 fa file can be searched simultaneously, depending on the number of cores. The original version can be
-found here: https://gt-scan.csiro.au/
+found [Here](https://gt-scan.csiro.au/)
 
 #1. First, download and add bowtie to your PATH variable.
 
